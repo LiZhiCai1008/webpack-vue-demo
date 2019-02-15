@@ -3,6 +3,8 @@
 const path = require('path');
 //引入自动将index.html文件打包到dist文件夹下的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+//引入将jQ拷贝到出口文件夹中的插件
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports={
     //类型
     mode : 'production',
@@ -21,6 +23,18 @@ module.exports={
             title : '三只小熊',
             filename : 'abc.html',
             template : './index.html'
-        })
-    ]
+        }),
+        new CopyWebpackPlugin([
+            {
+                from : './lib/jquery.min.js',
+                to : 'lib'
+            }
+        ])
+    ],
+    //解析
+    resolve:{
+        alias:{
+            vue : 'vue/dist/vue.esm.js'
+        }
+    }
 }
