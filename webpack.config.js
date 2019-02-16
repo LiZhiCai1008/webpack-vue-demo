@@ -16,6 +16,27 @@ module.exports={
         path : path.resolve(__dirname,"./dist"),//创建dist文件夹用于存放最后打包上线的文件
         filename : 'bundle.js'
     },
+    //加载器
+    module :{
+        rules :[
+            {
+                test : /\.css$/,
+                use : [
+                    //顺序要倒着写
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test : /\.scss/,
+                use : [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            }
+        ]
+    },
     //插件
     plugins : [
         //自动将index.html文件打包到出口文件夹中，并且自动引入打包好的js文件

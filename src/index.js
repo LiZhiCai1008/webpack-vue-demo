@@ -1,6 +1,7 @@
 //这是一个入口文件
 import Vue from "vue";
-
+//引入样式文件
+import './styles/style.scss';
 
 new Vue({
     el:'#app',
